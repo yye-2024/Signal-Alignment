@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 3D view of collision-free areas with different
 % packet lengths in two-sender-one-receiver setup
 %
@@ -10,7 +10,7 @@
 % Communications. In The 18th ACM International Conference 
 % on Underwater Networks & Systems (WUWNET ’24),
 % October 28–31, 2024, Sibenik, Croatia.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 interval=10; %sampling interval (m)
 xrange=300; %underwater space: 300 m x 300 m x 300 m
