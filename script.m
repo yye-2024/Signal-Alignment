@@ -12,7 +12,7 @@
 % October 28–31, 2024, Sibenik, Croatia.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-interval=10; %sampling interval
+interval=10; %sampling interval (m)
 xrange=300; %underwater space: 300 m x 300 m x 300 m
 yrange=300;
 zrange=300;
@@ -23,10 +23,10 @@ test_x=xrange/interval+1;
 test_y=yrange/interval+1;
 test_z=zrange/interval+1;
 
-l=1;     % communication range (km)
+l=1000;     % communication range (m)
 
-v=10000; % transmission data rate
-c=1500; %wave velocity
+v=10000; % transmission data rate (bps)
+c=1500; %wave velocity (m/s)
 
 
 index=zeros(test_x,test_y,test_z ); %collision free: 1, collision: 0
@@ -99,18 +99,19 @@ for packet_len=100:200:700 %plot figures with different packet length
                     else %collision
                         r=2;
                     end
+                    if d1<l && d2<l %within communication rage
+                        if r == 0 %packet 2 arrives after packet 1
+                            index(test_loc+1)=1; %collision free
+                            count_1=count_1+1;
+                            plot3(test_loc(1),test_loc(2),test_loc(3),'b.');
+                        end
 
-                    if r == 0 %packet 2 arrives after packet 1
-                        index(test_loc+1)=1; %collision free
-                        count_1=count_1+1;
-                        plot3(test_loc(1),test_loc(2),test_loc(3),'b.');
-                    end
 
-                    
-                    if r == 1 %packet 2 arrives before packet 1
-                        index(test_loc+1)=1; %collision free
-                        count_2=count_2+1;
-                        plot3(test_loc(1),test_loc(2),test_loc(3),'k.');
+                        if r == 1 %packet 2 arrives before packet 1
+                            index(test_loc+1)=1; %collision free
+                            count_2=count_2+1;
+                            plot3(test_loc(1),test_loc(2),test_loc(3),'k.');
+                        end
                     end
             end
         end
